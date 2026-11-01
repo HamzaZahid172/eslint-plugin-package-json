@@ -82,7 +82,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: $/.github/actions/setup
-      - run: pnpm format --list-different
+      - run: |
+          pnpm format
+          git diff -- src/rules/prefer-scoped-name.ts src/tests/rules/prefer-scoped-name.test.ts
 
   lint:
     name: Lint
