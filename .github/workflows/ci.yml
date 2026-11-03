@@ -143,7 +143,9 @@ jobs:
       - uses: $/.github/actions/setup
       - run: pnpm run test --coverage
       - uses: codecov/codecov-action@v7.1.1
-        if: success() && (matrix.os == 'ubuntu-latest')
+        # A fork may not be registered with Codecov; keep the coverage tests
+        # mandatory but publish the report only for the upstream repository.
+        if: success() && (matrix.os == 'ubuntu-latest') && (github.repository == 'michaelfaith/eslint-plugin-package-json')
         with:
           fail_ci_if_error: true
           use_oidc: true
