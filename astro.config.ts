@@ -24,6 +24,11 @@ const config: AstroUserConfig = defineConfig({
       plugins: [starlightAutoSidebar(), starlightCatppuccin()],
       sidebar: [
         { label: 'Getting Started', slug: 'getting-started' },
+        {
+          collapsed: true,
+          items: [{ label: 'v1 to v2', slug: 'migrations/v2' }],
+          label: 'Migration Guides',
+        },
         { label: 'Rule List', slug: 'rule-list' },
         {
           collapsed: true,
