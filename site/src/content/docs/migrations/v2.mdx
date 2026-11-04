@@ -26,7 +26,15 @@ Congrats for being cool 😎.
 ### No-config Usage
 
 If you previously set up the plugin and `parser` manually to enable some subset of our rules, then you'll have a little more to do.
-You just need to remove the `parser` configuration, and add the `language`.
+Replace the `parser` configuration with `language: 'json/json'` and register `@eslint/json` as the `json` plugin. Without that registration, ESLint cannot resolve the `json/json` language.
+
+Import `jsonPlugin` from `@eslint/json` in your ESLint configuration:
+
+```ts
+import jsonPlugin from '@eslint/json';
+```
+
+Then update the configuration:
 
 ```diff
 {
@@ -36,6 +44,7 @@ You just need to remove the `parser` configuration, and add the `language`.
 -  },
 +  language: 'json/json',
   plugins: {
++    json: jsonPlugin,
     'package-json': packageJson,
   },
   rules: {
